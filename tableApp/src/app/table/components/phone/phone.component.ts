@@ -23,7 +23,7 @@ export class PhoneComponent implements OnInit {
 
   private createForm(): void {
     this.phoneForm = this.fb.group({
-      brand: [this.phone?.brand, [Validators.required], capitalLetterValidator()],
+      brand: [this.phone?.brand, [Validators.required]],
       model: [this.phone?.model, [Validators.required]],
       storage: [this.phone?.storage, [Validators.required, Validators.min(1)]],
       price: [this.phone?.price, [Validators.required, Validators.min(1)]],

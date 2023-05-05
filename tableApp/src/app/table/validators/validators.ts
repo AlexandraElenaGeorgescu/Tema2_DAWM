@@ -1,15 +1,9 @@
-import { AbstractControl, ValidatorFn } from '@angular/forms';
+import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 
 export function capitalLetterValidator(): ValidatorFn {
-  return (control: AbstractControl): { [key: string]: any } | null => {
-    const name = control.value;
-    if (!name) {
-      return null;
-    }
-    const firstLetter = name.charAt(0);
-    if (firstLetter !== firstLetter.toUpperCase()) {
-      return { capitalLetter: { value: control.value } };
-    }
-    return null;
-  };
-}
+    return (control: AbstractControl): ValidationErrors | null => {
+      const value = control.value as string;
+      const isUppercase = value === value.toUpperCase();
+      return isUppercase ? null : { uppercase: true };
+    };
+  }
