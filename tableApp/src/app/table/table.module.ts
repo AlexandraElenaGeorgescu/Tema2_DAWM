@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA  } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TablePageComponent } from './components/table-page/table-page.component';
 import { PhoneComponent } from './components/phone/phone.component';
@@ -18,6 +18,11 @@ import { NzPaginationModule } from 'ng-zorro-antd/pagination';
 import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
 import { AppRoutingModule } from '../app-routing.module';
 import { TableRoutingModule } from './table-routing.module';
+import { IconsProviderModule } from '../icons-provider.module';
+import { IconDefinition } from '@ant-design/icons-angular';
+import {AccountBookFill, AlertOutline, AlertFill} from '@ant-design/icons-angular/icons';
+
+const icons: IconDefinition[] = [ AccountBookFill, AlertOutline, AlertFill];
 
 @NgModule({
   declarations: [
@@ -30,7 +35,7 @@ import { TableRoutingModule } from './table-routing.module';
     TableRoutingModule,
     NzButtonModule,
     NzFormModule,
-    NzIconModule,
+    NzIconModule.forRoot(icons),
     NzInputModule,
     NzMessageModule,
     NzModalModule,
@@ -39,7 +44,9 @@ import { TableRoutingModule } from './table-routing.module';
     NzSelectModule,
     NzTableModule,
     FormsModule,
-    ReactiveFormsModule
-  ]
+    ReactiveFormsModule,
+    IconsProviderModule
+  ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class TableModule { }

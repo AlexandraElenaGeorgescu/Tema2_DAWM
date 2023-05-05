@@ -15,7 +15,10 @@
       </thead>
       <tbody>
         <tr *ngFor="let phone of getPaginatedPhones()">
-          <td>{{ phone.id }}</td>
+          <td>
+                <span nz-icon nzType="phone" nzTheme="outline"></span>
+                {{ phone.id }}
+          </td>
           <td>{{ phone.brand }}</td>
           <td>{{ phone.model }}</td>
           <td>{{ phone.storage }}</td>
