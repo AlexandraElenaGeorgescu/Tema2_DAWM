@@ -1,8 +1,7 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA  } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TablePageComponent } from './components/table-page/table-page.component';
-import { PhoneComponent } from './components/phone/phone.component';
-import { PaginationPipe } from './pipes/pagination.pipe';
+import { PhoneComponent } from './components/phone/phone.component'
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 
@@ -21,6 +20,7 @@ import { TableRoutingModule } from './table-routing.module';
 import { IconsProviderModule } from '../icons-provider.module';
 import { IconDefinition } from '@ant-design/icons-angular';
 import {AccountBookFill, AlertOutline, AlertFill} from '@ant-design/icons-angular/icons';
+import { NameUppercasePipe } from './pipes/name-uppercase.pipe';
 
 const icons: IconDefinition[] = [ AccountBookFill, AlertOutline, AlertFill];
 
@@ -28,7 +28,7 @@ const icons: IconDefinition[] = [ AccountBookFill, AlertOutline, AlertFill];
   declarations: [
     TablePageComponent,
     PhoneComponent,
-    PaginationPipe
+    NameUppercasePipe
   ],
   imports: [
     CommonModule,

@@ -20,7 +20,7 @@
                 {{ phone.id }}
           </td>
           <td>{{ phone.brand }}</td>
-          <td>{{ phone.model }}</td>
+          <td>{{ phone.model | nameUppercase  }}</td>
           <td>{{ phone.storage }}</td>
           <td>{{ phone.price }}</td>
           <td>
