@@ -32,11 +32,4 @@ export class PhoneService {
       this.phones[index] = phone;
     }
   }
-
-  deletePhone(id: number): void {
-    const index = this.phones.findIndex((p) => p.id === id);
-    if (index !== -1) {
-      this.phones.splice(index, 1);
-    }
-  }
 }

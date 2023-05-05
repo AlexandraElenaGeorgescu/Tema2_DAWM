@@ -12,6 +12,7 @@ export class PhoneComponent implements OnInit {
   @Input()
   phone!: Phone;
   phoneForm!: FormGroup;
+  newPhone?: Phone;
 
   constructor(private fb: FormBuilder, public modalRef: NzModalRef) {}
 
@@ -40,15 +41,13 @@ export class PhoneComponent implements OnInit {
       return;
     }
 
-    const newPhone: Phone = {
+    this.newPhone = {
       brand: this.phoneForm.value.brand,
       model: this.phoneForm.value.model,
       storage: this.phoneForm.value.storage,
       price: this.phoneForm.value.price,
       id: this.phoneForm.value.id
     };
-
-    this.modalRef.destroy(newPhone);
   }
 
 }
