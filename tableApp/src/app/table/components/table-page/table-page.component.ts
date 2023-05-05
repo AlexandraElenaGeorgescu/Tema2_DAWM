@@ -18,6 +18,7 @@ export class TablePageComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadPhones();
+    this.getPhones();
   }
 
   loadPhones(): void {
@@ -78,5 +79,24 @@ export class TablePageComponent implements OnInit {
     });
     
   }
+  currentPage: number = 1;
+  pageSize: number = 8;
+  phones!: Phone[];
   
+  getPhones(): void {
+    this.phoneService.getPhones().subscribe((phones) => {
+      this.phones = phones;
+    });
+  }
+
+  getPaginatedPhones(): Phone[] {
+    const startIndex = (this.currentPage - 1) * this.pageSize;
+    const endIndex = startIndex + this.pageSize;
+    return this.phones.slice(startIndex, endIndex);
+  }
+
+  onPageChange(page: number): void {
+    this.currentPage = page;
+  }
+
 }

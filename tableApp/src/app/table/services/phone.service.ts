@@ -14,6 +14,9 @@ export class PhoneService {
     { id: 4, brand: 'OnePlus', model: '9 Pro', storage: 256, price: 969 },
     { id: 5, brand: 'Xiaomi', model: 'Mi 11', storage: 256, price: 749 },
     { id: 6, brand: 'Motorola', model: 'Moto G Power (2021)', storage: 64, price: 199 },
+    { id: 7, brand: 'Samsung', model: 'S22 Ultra', storage: 256, price: 969 },
+    { id: 8, brand: 'Xiaomi', model: 'Mi 12', storage: 256, price: 749 },
+    { id: 9, brand: 'Motorola', model: 'x', storage: 64, price: 199 },
   ];
 
   getPhones(): Observable<Phone[]> {

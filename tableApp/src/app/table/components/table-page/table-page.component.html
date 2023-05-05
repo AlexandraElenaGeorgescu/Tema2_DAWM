@@ -1,7 +1,9 @@
 <div class="table-container">
-    <ng-container *ngIf="phones$ | async as phones">
-        <nz-table #table [nzData]="phones" nzBordered nzPagination [nzPageSizeOptions]="[8]">
-       <thead>
+<ng-container *ngIf="phones$ | async as phones">
+  <nz-table #table [nzData]="phones" nzBordered 
+  nz-pagination [nzPageIndex]="currentPage" [nzPageSize]="pageSize"
+  [nzTotal]="phones.length" (nzPageIndexChange)="onPageChange($event)">
+     <thead>
         <tr>
           <th>ID</th>
           <th>Brand</th>
@@ -12,7 +14,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let phone of table.data">
+        <tr *ngFor="let phone of getPaginatedPhones()">
           <td>{{ phone.id }}</td>
           <td>{{ phone.brand }}</td>
           <td>{{ phone.model }}</td>
