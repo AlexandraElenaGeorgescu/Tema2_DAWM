@@ -1,10 +1,54 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Phone } from '../../interfaces/phone.interface';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { NzModalRef } from 'ng-zorro-antd/modal';
 
 @Component({
   selector: 'app-phone',
   templateUrl: './phone.component.html',
   styleUrls: ['./phone.component.scss']
 })
-export class PhoneComponent {
+export class PhoneComponent implements OnInit {
+  @Input()
+  phone!: Phone;
+  phoneForm!: FormGroup;
+
+  constructor(private fb: FormBuilder, public modalRef: NzModalRef) {}
+
+  ngOnInit(): void {
+    this.createForm();
+  }
+
+  private createForm(): void {
+    this.phoneForm = this.fb.group({
+      brand: [this.phone?.brand, [Validators.required]],
+      model: [this.phone?.model, [Validators.required]],
+      storage: [this.phone?.storage, [Validators.required, Validators.min(1)]],
+      price: [this.phone?.price, [Validators.required, Validators.min(1)]],
+      id: [this.phone?.id, [Validators.required, Validators.min(1)]]
+    });
+  }
+
+  submitForm(): void {
+    if (this.phoneForm.invalid) {
+      for (const i in this.phoneForm.controls) {
+        if (this.phoneForm.controls.hasOwnProperty(i)) {
+          this.phoneForm.controls[i].markAsDirty();
+          this.phoneForm.controls[i].updateValueAndValidity();
+        }
+      }
+      return;
+    }
+
+    const newPhone: Phone = {
+      brand: this.phoneForm.value.brand,
+      model: this.phoneForm.value.model,
+      storage: this.phoneForm.value.storage,
+      price: this.phoneForm.value.price,
+      id: this.phoneForm.value.id
+    };
+
+    this.modalRef.destroy(newPhone);
+  }
 
 }

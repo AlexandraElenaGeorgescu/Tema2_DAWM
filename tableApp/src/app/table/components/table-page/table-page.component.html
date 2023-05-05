@@ -1,1 +1,31 @@
-<p>table-page works!</p>
+<div class="table-container">
+    <ng-container *ngIf="phones$ | async as phones">
+        <nz-table #table [nzData]="phones" nzBordered nzPagination [nzPageSizeOptions]="[8]">
+       <thead>
+        <tr>
+          <th>ID</th>
+          <th>Brand</th>
+          <th>Model</th>
+          <th>Storage (GB)</th>
+          <th>Price ($)</th>
+          <th>Edit</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let phone of table.data">
+          <td>{{ phone.id }}</td>
+          <td>{{ phone.brand }}</td>
+          <td>{{ phone.model }}</td>
+          <td>{{ phone.storage }}</td>
+          <td>{{ phone.price }}</td>
+          <td>
+            <button nz-button nzType="primary" nzShape="circle" nzIcon="edit" (click)="editPhone(phone)">Edit</button>
+          </td>
+        </tr>
+      </tbody>
+    </nz-table>
+  
+  <div class="add-button-container">
+    <button nz-button nzType="primary" nzSize="large" nzShape="round" (click)="addPhone()">Add</button>
+  </div>
+  

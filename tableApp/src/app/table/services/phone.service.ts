@@ -7,7 +7,7 @@ import { Observable, delay, of } from 'rxjs';
 })
 export class PhoneService {
 
-  private phones: Phone[] = [
+  private phones: Phone[]= [
     { id: 1, brand: 'Apple', model: 'iPhone 12', storage: 64, price: 799 },
     { id: 2, brand: 'Samsung', model: 'Galaxy S21', storage: 128, price: 699 },
     { id: 3, brand: 'Google', model: 'Pixel 5', storage: 128, price: 699 },

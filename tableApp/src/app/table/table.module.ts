@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { TablePageComponent } from './components/table-page/table-page.component';
 import { PhoneComponent } from './components/phone/phone.component';
 import { PaginationPipe } from './pipes/pagination.pipe';
+import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
 import { NzTableModule } from 'ng-zorro-antd/table';
 import { NzButtonModule } from 'ng-zorro-antd/button';
@@ -14,6 +16,8 @@ import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzMessageModule } from 'ng-zorro-antd/message';
 import { NzPaginationModule } from 'ng-zorro-antd/pagination';
 import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
+import { AppRoutingModule } from '../app-routing.module';
+import { TableRoutingModule } from './table-routing.module';
 
 @NgModule({
   declarations: [
@@ -23,6 +27,7 @@ import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
   ],
   imports: [
     CommonModule,
+    TableRoutingModule,
     NzButtonModule,
     NzFormModule,
     NzIconModule,
@@ -32,7 +37,9 @@ import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
     NzPaginationModule,
     NzPopconfirmModule,
     NzSelectModule,
-    NzTableModule
+    NzTableModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class TableModule { }
